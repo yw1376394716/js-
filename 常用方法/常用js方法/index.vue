@@ -25,14 +25,19 @@
         <p>判断是否为质数</p>
         <p>遍历类数组对象</p>
         <p>时间格式化</p> 
+
         <p>sort 排序</p>
         <p>reduce(数组内每一项数字相加)</p>
         <p>filter(过滤数组)</p>
         <p>every(每一项是否满足)</p>
         <p>some(有一项满足返回 true)</p>
-        <p>indexOf (如果存在返回-1)</p>
+        <p>indexOf (如果存在返回-1)</p>  
+        <p>includes(字符串或数组中是否含有某项)</p>
         <p>find</p>
+
         <p>对象和数组转化</p>
+        <p>数字金额千分位格式化</p>
+        
     </div>
 </template>
 <script>
@@ -261,8 +266,22 @@ export default {
             arr.indexOf(0) // -1
             arr.indexOf(1) // 0
         },
-        // find 
         fn13(){
+            var str = '123456789asdqwert';
+            console.log(str.includes('d'));  // true
+
+            var arr = ['a','s','f','g','h','j','k','a']
+            console.log(arr.includes('s'));    // true
+            console.log(arr.includes('a','s')); // true  
+
+            // 该方法的第二个参数表示搜索的起始位置，默认为0。如果第二个参数为负数，则表示倒数的位置，
+            // 如果这时它大于数组长度(比如第二个参数为-4， 但数组长度为3)，则会重置为0开始
+            console.log(arr.includes('a',0));  // true  
+            console.log(arr.includes('a',-1)); // true 
+
+        },
+        // find 
+        fn14(){
             let arr=[1,2,3,4,5,6];
             arr.find((value, index, arr) => {
                 // value：每一次迭代查找的数组元素。
@@ -271,11 +290,31 @@ export default {
             })
         },
         // Object 对象和数组转化
-        fn14(){
+        fn15(){
             Object.keys({name:'张三',age:14});   // ["name", "age"]
             Object.values({name:'张三',age:14}); // ["张三", 14]
             Object.entries({name:'张三',age:14});// [[name,'张三'],[age,14]]
         },
+        // 数字金额千分位格式化
+        fn16(){
+            
+            var num = 123455678;
+            var num1 = 123455678.12345;
+
+            // 1 使用Number.prototype.toLocaleString()
+            var formatNum = num.toLocaleString('en-US');
+            var formatNum1 = num1.toLocaleString('en-US');
+
+            console.log(formatNum); // 123,455,678
+            console.log(formatNum1); // 123,455,678.123     
+
+            // 2 使用正则表达式
+            var formatNum = String(num).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+            var formatNum1 = String(num1).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+            console.log(formatNum); // 123,455,678
+            console.log(formatNum1); // 123,455,678.12,345                   
+        }
     },
 }
 </script>
