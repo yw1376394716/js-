@@ -1,14 +1,13 @@
 <template>
     <div>
-        <!-- fn1 时间倒计时-->
         <p>时间倒计时(2021-09-25 02:02:02)</p>
         <span>{{time}}</span>
 
-
         <p>获取某月第一天与最后一天的日期</p>
 
-
         <p> 时间格式化</p>
+
+        <p> 获取当前年月日时分秒 星期几</p>
 
     </div>
 </template>
@@ -89,7 +88,7 @@
                 return fmt;
             }        
             getMonthFirstLastDay(2019,10);     // 年 月   
-        }
+        },
         fn3(){
             // 时间格式化
             const dateFormatter = (formatter, date) => {
@@ -110,6 +109,18 @@
             }
 
             dateFormatter('YYYY-MM-DD HH:mm', '1995/02/15 13:55') // 1995-02-15 13:55            
+        },
+        fn4(){
+            var myDate = new Date();
+
+            var myYear = myDate.getFullYear();  // 获取当前年份
+            var myMonth = myDate.getMonth() +1; // 获取当前月份
+            var myDay = myDate.getDate() // 获取当前日（1- 31）
+            var myHours = myDate.getHours() // 获取当前小时(0-23)
+            var myMinu = myDate.getMinutes() // 获取当前分钟(0-59)
+            var mySec = myDate.getSeconds() // 获取当前秒数(0-59)
+            var myWeek = myDate.getDay()  //获取当前星期几(0-6,0代表星期天)
+           
         }
     } 
   }  

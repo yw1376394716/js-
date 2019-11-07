@@ -245,6 +245,15 @@ export default {
             arr.filter(item=>{
                 return item >3
             })
+
+            var newarr = [
+                { num: 1, val: 'ceshi', flag: 'aa' },
+                { num: 2, val: 'ceshi2', flag: 'aa2'  }
+            ]
+            let a = [];
+            console.log(newarr.filter(item => item.num===2 ))
+            a = newarr.filter(item => item.num===2 )
+            console.log(a)            
         },
         // every 每一项是否满足 (只有每一项满足返回 true。)
         fn10(){
