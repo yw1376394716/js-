@@ -1,0 +1,68 @@
+<html>
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>导航栏吸顶效果</title>
+		<style type="text/css">
+			html, body {
+				width: 100%;
+				min-width: 320px;
+				max-width: 750px;
+				margin: 0 auto;
+				background: #FAFBFC;
+				color: #fff;
+				font: normal 14px/1.5 "Helvetica Neue", "Hiragino Sans GB", "Microsoft YaHei", "\9ED1\4F53", Arial, sans-serif;
+			}
+			.top{background-color: greenyellow;height: 50px;}
+			.nav {
+				line-height: 44px;
+				background-color: red;
+			}
+			.list {
+				background-color: blue;
+				height: 1200px;
+				;
+			}
+			.fixed{position: fixed;top: 0;left: 0;right: 0;}
+		</style>
+	</head>
+
+	<body>
+		<div class="top">我是导航栏上面的内容</div>
+		<div class="nav" id="nav_model">我是导航栏，我是要固定的模块</div>
+		<div class="list">
+			<div>我是列表内容1</div>
+			<div>我是列表内容1</div>
+			<div>我是列表内容1</div>
+			<div>我是列表内容1</div>
+			<div>我是列表内容1</div>
+			<div>我是列表内容1</div>
+			<div>我是列表内容1</div>
+		</div>
+		<script>
+			//获取滚动条当前的位置
+			function getScrollTop() {
+				var scrollTop = 0;
+				if(document.documentElement && document.documentElement.scrollTop) {
+					scrollTop = document.documentElement.scrollTop;
+				} else if(document.body) {
+					scrollTop = document.body.scrollTop;
+				}
+				return scrollTop;
+			}
+			//获取导航栏的dom节点
+			var nav_dom=document.getElementById("nav_model");
+			//监听滚动条
+			window.onscroll = function() {
+				//判断滚动条大于30,导航栏吸顶
+				if(getScrollTop() > 50) {
+					nav_dom.className = "nav fixed";
+				} else {
+					nav_dom.className = "nav";
+				}
+			}
+		</script>
+	</body>
+
+</html>
